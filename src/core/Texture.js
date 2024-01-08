@@ -887,8 +887,8 @@ export class Texture {
      ***/
     _videoFrameCallback() {
         this._willUpdate = true;
-        const waitForSource = this.renderer.nextRender(() => {
-            if(this.source) {
+        const waitForSource = this.renderer.nextRender.add(() => {
+            if (this.source) {
                 // source is ready, stop executing the callback
                 waitForSource.keep = false;
                 this.source.requestVideoFrameCallback(() => this._videoFrameCallback());
